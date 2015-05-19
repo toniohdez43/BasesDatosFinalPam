@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ProyectoFinalPam.Models.Becario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="font-family:'Century Gothic'">Becarios</h2>
+
+<p id="creaBecario">
+   
+
+    @Html.ActionLink("Crear nuevo", "Create")
+
+ 
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Nombre
+        </th>
+        <th>
+           Apellido Paterno
+        </th>
+        <th>
+            Apellido Materno
+        </th>
+        <th>
+           Fecha de Nacimiento
+        </th>
+        <th>
+            Grado Escolar
+        </th>
+        <th>
+           Promedio
+        </th>
+        <th>
+           Foto
+        </th>
+        <th>
+            Tipo de beca
+        </th>
+        <th>
+           Escuela
+        </th>
+        <th>
+           Nombre del tutor
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GradoEscolar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Promedio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.ClaveCat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Escuela.Escuela1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tutor.Nombre)
+        </td>
+        <td>
+           
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDBecario }) |
+            
+             
+                @Html.ActionLink("Delete", "Delete", new { id = item.IDBecario })
+</td>
+    </tr>
+}
+
+
+</table>
+<script>
+    
+
+</script>

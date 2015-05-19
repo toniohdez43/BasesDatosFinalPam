@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProyectoFinalPam.Models.Categoria>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tipos de beca</h2>
+
+
+
+    @Html.ActionLink("Crear nuevo", "Create")
+
+
+<table class="table">
+    <tr>
+        <th>
+           Tipo de beca
+        </th>
+        <th>
+           Descripcion
+        </th>
+        <th>
+           Monto
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClaveCat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDCategoria }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDCategoria }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDCategoria })
+        </td>
+    </tr>
+}
+
+</table>

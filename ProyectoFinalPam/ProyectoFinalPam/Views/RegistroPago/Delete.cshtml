@@ -1,0 +1,120 @@
+﻿@model ProyectoFinalPam.Models.RegistroPago
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RegistroPago</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClaveCat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClaveCat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPago1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPago1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPago2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPago2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPago3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPago3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPago4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPago4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPago5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPago5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Becario.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Becario.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

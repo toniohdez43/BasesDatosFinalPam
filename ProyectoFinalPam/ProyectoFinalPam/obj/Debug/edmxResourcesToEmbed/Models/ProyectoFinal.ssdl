@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoFinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProyectoFinal.dbo.AsignacionOrganizacion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AsignacionOrganizacion">
+    <Key>
+      <PropertyRef Name="IDBecario" />
+    </Key>
+    <Property Name="IDBecario" Type="int" Nullable="false" />
+    <Property Name="IDOrganizacion" Type="int" />
+    <Property Name="Horas" Type="int" />
+  </EntityType>
+  <EntityType Name="Becario">
+    <Key>
+      <PropertyRef Name="IDBecario" />
+    </Key>
+    <Property Name="IDBecario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDTutor" Type="int" Nullable="false" />
+    <Property Name="IDCategoria" Type="int" Nullable="false" />
+    <Property Name="IDEscuela" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ApellidoP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ApellidoM" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+    <Property Name="GradoEscolar" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Promedio" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Foto" Type="image" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IDCategoria" />
+    </Key>
+    <Property Name="IDCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClaveCat" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Monto" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Escuela">
+    <Key>
+      <PropertyRef Name="IDEscuela" />
+    </Key>
+    <Property Name="IDEscuela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Escuela" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Telefono" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Organizacion">
+    <Key>
+      <PropertyRef Name="IDOrg" />
+    </Key>
+    <Property Name="IDOrg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="int" Nullable="false" />
+    <Property Name="Celular" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pago">
+    <Key>
+      <PropertyRef Name="IDPago" />
+    </Key>
+    <Property Name="IDPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Monto1" Type="money" />
+    <Property Name="Monto2" Type="money" />
+    <Property Name="Monto3" Type="money" />
+    <Property Name="Monto4" Type="money" />
+    <Property Name="Monto5" Type="money" />
+    <Property Name="NumeroParcialidades" Type="int" />
+    <Property Name="MontoTotal" Type="money" Nullable="false" />
+    <Property Name="MontoParcialidad" Type="money" />
+    <Property Name="BecadoID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegistroPago">
+    <Key>
+      <PropertyRef Name="IDRegistroPago" />
+    </Key>
+    <Property Name="IDRegistroPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDBecado" Type="int" />
+    <Property Name="ClaveCat" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Pago1" Type="bit" />
+    <Property Name="FechaPago1" Type="date" />
+    <Property Name="Pago2" Type="bit" />
+    <Property Name="FechaPago2" Type="date" />
+    <Property Name="Pago3" Type="bit" />
+    <Property Name="FechaPago3" Type="date" />
+    <Property Name="Pago4" Type="bit" />
+    <Property Name="FechaPago4" Type="date" />
+    <Property Name="Pago5" Type="bit" />
+    <Property Name="FechaPago5" Type="date" />
+  </EntityType>
+  <EntityType Name="ServicioBecado">
+    <Key>
+      <PropertyRef Name="IDServicio" />
+    </Key>
+    <Property Name="IDServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDOrg" Type="int" Nullable="false" />
+    <Property Name="IDBecado" Type="int" Nullable="false" />
+    <Property Name="Dias" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HorarioInicio" Type="time" Precision="7" Nullable="false" />
+    <Property Name="HorarioFin" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Actividades" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaInicio" Type="date" Nullable="false" />
+    <Property Name="FechaFin" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tutor">
+    <Key>
+      <PropertyRef Name="IDTutor" />
+    </Key>
+    <Property Name="IDTutor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ApellidoP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ApellidoM" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DomicilioCasa" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="DomicilioTrabajo" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Puesto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TelefonoCasa" Type="int" Nullable="false" />
+    <Property Name="TelefonoTrabajo" Type="int" Nullable="false" />
+    <Property Name="FechaInicio" Type="date" Nullable="false" />
+    <Property Name="FechaFinal" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AsignacionOrganizacion_Becario">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AsignacionOrganizacion" Type="Self.AsignacionOrganizacion" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="IDBecario" />
+      </Principal>
+      <Dependent Role="AsignacionOrganizacion">
+        <PropertyRef Name="IDBecario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AsignacionOrganizacion_Organizacion">
+    <End Role="Organizacion" Type="Self.Organizacion" Multiplicity="0..1" />
+    <End Role="AsignacionOrganizacion" Type="Self.AsignacionOrganizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizacion">
+        <PropertyRef Name="IDOrg" />
+      </Principal>
+      <Dependent Role="AsignacionOrganizacion">
+        <PropertyRef Name="IDOrganizacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Becario_Categoria">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IDCategoria" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="IDCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Becario_Escuela">
+    <End Role="Escuela" Type="Self.Escuela" Multiplicity="1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escuela">
+        <PropertyRef Name="IDEscuela" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="IDEscuela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Becario_Tutor">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="IDTutor" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="IDTutor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pago_Becario">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="IDBecario" />
+      </Principal>
+      <Dependent Role="Pago">
+        <PropertyRef Name="BecadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegistroPago_Becario">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RegistroPago" Type="Self.RegistroPago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="IDBecario" />
+      </Principal>
+      <Dependent Role="RegistroPago">
+        <PropertyRef Name="IDBecado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioBecado_Becario">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServicioBecado" Type="Self.ServicioBecado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="IDBecario" />
+      </Principal>
+      <Dependent Role="ServicioBecado">
+        <PropertyRef Name="IDBecado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioBecado_Organizacion">
+    <End Role="Organizacion" Type="Self.Organizacion" Multiplicity="1" />
+    <End Role="ServicioBecado" Type="Self.ServicioBecado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizacion">
+        <PropertyRef Name="IDOrg" />
+      </Principal>
+      <Dependent Role="ServicioBecado">
+        <PropertyRef Name="IDOrg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ConsultaAlumno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="x" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultaBecario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="x" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultaPagos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="x" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="consultaServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="x" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultaTutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="x" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="PagoAutomatico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDBecario" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="ProyectoFinalModelStoreContainer">
+    <EntitySet Name="Becario" EntityType="Self.Becario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Escuela" EntityType="Self.Escuela" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organizacion" EntityType="Self.Organizacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegistroPago" EntityType="Self.RegistroPago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServicioBecado" EntityType="Self.ServicioBecado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tutor" EntityType="Self.Tutor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AsignacionOrganizacion" EntityType="Self.AsignacionOrganizacion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AsignacionOrganizacion].[IDBecario] AS [IDBecario], 
+    [AsignacionOrganizacion].[IDOrganizacion] AS [IDOrganizacion], 
+    [AsignacionOrganizacion].[Horas] AS [Horas]
+    FROM [dbo].[AsignacionOrganizacion] AS [AsignacionOrganizacion]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_AsignacionOrganizacion_Becario" Association="Self.FK_AsignacionOrganizacion_Becario">
+      <End Role="Becario" EntitySet="Becario" />
+      <End Role="AsignacionOrganizacion" EntitySet="AsignacionOrganizacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AsignacionOrganizacion_Organizacion" Association="Self.FK_AsignacionOrganizacion_Organizacion">
+      <End Role="Organizacion" EntitySet="Organizacion" />
+      <End Role="AsignacionOrganizacion" EntitySet="AsignacionOrganizacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Becario_Categoria" Association="Self.FK_Becario_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Becario" EntitySet="Becario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Becario_Escuela" Association="Self.FK_Becario_Escuela">
+      <End Role="Escuela" EntitySet="Escuela" />
+      <End Role="Becario" EntitySet="Becario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Becario_Tutor" Association="Self.FK_Becario_Tutor">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="Becario" EntitySet="Becario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pago_Becario" Association="Self.FK_Pago_Becario">
+      <End Role="Becario" EntitySet="Becario" />
+      <End Role="Pago" EntitySet="Pago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegistroPago_Becario" Association="Self.FK_RegistroPago_Becario">
+      <End Role="Becario" EntitySet="Becario" />
+      <End Role="RegistroPago" EntitySet="RegistroPago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioBecado_Becario" Association="Self.FK_ServicioBecado_Becario">
+      <End Role="Becario" EntitySet="Becario" />
+      <End Role="ServicioBecado" EntitySet="ServicioBecado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioBecado_Organizacion" Association="Self.FK_ServicioBecado_Organizacion">
+      <End Role="Organizacion" EntitySet="Organizacion" />
+      <End Role="ServicioBecado" EntitySet="ServicioBecado" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

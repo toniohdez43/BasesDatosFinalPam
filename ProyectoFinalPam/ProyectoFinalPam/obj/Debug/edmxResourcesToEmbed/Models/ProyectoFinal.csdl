@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoFinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Becario">
+    <Key>
+      <PropertyRef Name="IDBecario" />
+    </Key>
+    <Property Name="IDBecario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDTutor" Type="Int32" Nullable="false" />
+    <Property Name="IDCategoria" Type="Int32" Nullable="false" />
+    <Property Name="IDEscuela" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="GradoEscolar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Promedio" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="AsignacionOrganizacion" Relationship="Self.FK_AsignacionOrganizacion_Becario" FromRole="Becario" ToRole="AsignacionOrganizacion" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK_Becario_Categoria" FromRole="Becario" ToRole="Categoria" />
+    <NavigationProperty Name="Escuela" Relationship="Self.FK_Becario_Escuela" FromRole="Becario" ToRole="Escuela" />
+    <NavigationProperty Name="Tutor" Relationship="Self.FK_Becario_Tutor" FromRole="Becario" ToRole="Tutor" />
+    <NavigationProperty Name="Pagoes" Relationship="Self.FK_Pago_Becario" FromRole="Becario" ToRole="Pago" />
+    <NavigationProperty Name="RegistroPagoes" Relationship="Self.FK_RegistroPago_Becario" FromRole="Becario" ToRole="RegistroPago" />
+    <NavigationProperty Name="ServicioBecadoes" Relationship="Self.FK_ServicioBecado_Becario" FromRole="Becario" ToRole="ServicioBecado" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IDCategoria" />
+    </Key>
+    <Property Name="IDCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClaveCat" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Becarios" Relationship="Self.FK_Becario_Categoria" FromRole="Categoria" ToRole="Becario" />
+  </EntityType>
+  <EntityType Name="Escuela">
+    <Key>
+      <PropertyRef Name="IDEscuela" />
+    </Key>
+    <Property Name="IDEscuela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Escuela1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Becarios" Relationship="Self.FK_Becario_Escuela" FromRole="Escuela" ToRole="Becario" />
+  </EntityType>
+  <EntityType Name="Organizacion">
+    <Key>
+      <PropertyRef Name="IDOrg" />
+    </Key>
+    <Property Name="IDOrg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="Int32" Nullable="false" />
+    <Property Name="Celular" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AsignacionOrganizacions" Relationship="Self.FK_AsignacionOrganizacion_Organizacion" FromRole="Organizacion" ToRole="AsignacionOrganizacion" />
+    <NavigationProperty Name="ServicioBecadoes" Relationship="Self.FK_ServicioBecado_Organizacion" FromRole="Organizacion" ToRole="ServicioBecado" />
+  </EntityType>
+  <EntityType Name="Pago">
+    <Key>
+      <PropertyRef Name="IDPago" />
+    </Key>
+    <Property Name="IDPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Monto1" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Monto2" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Monto3" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Monto4" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Monto5" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NumeroParcialidades" Type="Int32" />
+    <Property Name="MontoTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="MontoParcialidad" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BecadoID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Becario" Relationship="Self.FK_Pago_Becario" FromRole="Pago" ToRole="Becario" />
+  </EntityType>
+  <EntityType Name="RegistroPago">
+    <Key>
+      <PropertyRef Name="IDRegistroPago" />
+    </Key>
+    <Property Name="IDRegistroPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDBecado" Type="Int32" />
+    <Property Name="ClaveCat" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pago1" Type="Boolean" />
+    <Property Name="FechaPago1" Type="DateTime" Precision="0" />
+    <Property Name="Pago2" Type="Boolean" />
+    <Property Name="FechaPago2" Type="DateTime" Precision="0" />
+    <Property Name="Pago3" Type="Boolean" />
+    <Property Name="FechaPago3" Type="DateTime" Precision="0" />
+    <Property Name="Pago4" Type="Boolean" />
+    <Property Name="FechaPago4" Type="DateTime" Precision="0" />
+    <Property Name="Pago5" Type="Boolean" />
+    <Property Name="FechaPago5" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Becario" Relationship="Self.FK_RegistroPago_Becario" FromRole="RegistroPago" ToRole="Becario" />
+  </EntityType>
+  <EntityType Name="ServicioBecado">
+    <Key>
+      <PropertyRef Name="IDServicio" />
+    </Key>
+    <Property Name="IDServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDOrg" Type="Int32" Nullable="false" />
+    <Property Name="IDBecado" Type="Int32" Nullable="false" />
+    <Property Name="Dias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HorarioInicio" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="HorarioFin" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Actividades" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Becario" Relationship="Self.FK_ServicioBecado_Becario" FromRole="ServicioBecado" ToRole="Becario" />
+    <NavigationProperty Name="Organizacion" Relationship="Self.FK_ServicioBecado_Organizacion" FromRole="ServicioBecado" ToRole="Organizacion" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tutor">
+    <Key>
+      <PropertyRef Name="IDTutor" />
+    </Key>
+    <Property Name="IDTutor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DomicilioCasa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DomicilioTrabajo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Puesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TelefonoCasa" Type="Int32" Nullable="false" />
+    <Property Name="TelefonoTrabajo" Type="Int32" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Becarios" Relationship="Self.FK_Becario_Tutor" FromRole="Tutor" ToRole="Becario" />
+  </EntityType>
+  <EntityType Name="AsignacionOrganizacion">
+    <Key>
+      <PropertyRef Name="IDBecario" />
+    </Key>
+    <Property Name="IDBecario" Type="Int32" Nullable="false" />
+    <Property Name="IDOrganizacion" Type="Int32" />
+    <Property Name="Horas" Type="Int32" />
+    <NavigationProperty Name="Becario" Relationship="Self.FK_AsignacionOrganizacion_Becario" FromRole="AsignacionOrganizacion" ToRole="Becario" />
+    <NavigationProperty Name="Organizacion" Relationship="Self.FK_AsignacionOrganizacion_Organizacion" FromRole="AsignacionOrganizacion" ToRole="Organizacion" />
+  </EntityType>
+  <Association Name="FK_AsignacionOrganizacion_Becario">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AsignacionOrganizacion" Type="Self.AsignacionOrganizacion" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="IDBecario" />
+      </Principal>
+      <Dependent Role="AsignacionOrganizacion">
+        <PropertyRef Name="IDBecario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Becario_Categoria">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IDCategoria" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="IDCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Becario_Escuela">
+    <End Role="Escuela" Type="Self.Escuela" Multiplicity="1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escuela">
+        <PropertyRef Name="IDEscuela" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="IDEscuela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Becario_Tutor">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="IDTutor" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="IDTutor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pago_Becario">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="IDBecario" />
+      </Principal>
+      <Dependent Role="Pago">
+        <PropertyRef Name="BecadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegistroPago_Becario">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RegistroPago" Type="Self.RegistroPago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="IDBecario" />
+      </Principal>
+      <Dependent Role="RegistroPago">
+        <PropertyRef Name="IDBecado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioBecado_Becario">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServicioBecado" Type="Self.ServicioBecado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="IDBecario" />
+      </Principal>
+      <Dependent Role="ServicioBecado">
+        <PropertyRef Name="IDBecado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AsignacionOrganizacion_Organizacion">
+    <End Role="Organizacion" Type="Self.Organizacion" Multiplicity="0..1" />
+    <End Role="AsignacionOrganizacion" Type="Self.AsignacionOrganizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizacion">
+        <PropertyRef Name="IDOrg" />
+      </Principal>
+      <Dependent Role="AsignacionOrganizacion">
+        <PropertyRef Name="IDOrganizacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioBecado_Organizacion">
+    <End Role="Organizacion" Type="Self.Organizacion" Multiplicity="1" />
+    <End Role="ServicioBecado" Type="Self.ServicioBecado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizacion">
+        <PropertyRef Name="IDOrg" />
+      </Principal>
+      <Dependent Role="ServicioBecado">
+        <PropertyRef Name="IDOrg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProyectoFinalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Becarios" EntityType="Self.Becario" />
+    <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+    <EntitySet Name="Escuelas" EntityType="Self.Escuela" />
+    <EntitySet Name="Organizacions" EntityType="Self.Organizacion" />
+    <EntitySet Name="Pagoes" EntityType="Self.Pago" />
+    <EntitySet Name="RegistroPagoes" EntityType="Self.RegistroPago" />
+    <EntitySet Name="ServicioBecadoes" EntityType="Self.ServicioBecado" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tutors" EntityType="Self.Tutor" />
+    <EntitySet Name="AsignacionOrganizacions" EntityType="Self.AsignacionOrganizacion" />
+    <AssociationSet Name="FK_AsignacionOrganizacion_Becario" Association="Self.FK_AsignacionOrganizacion_Becario">
+      <End Role="Becario" EntitySet="Becarios" />
+      <End Role="AsignacionOrganizacion" EntitySet="AsignacionOrganizacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Becario_Categoria" Association="Self.FK_Becario_Categoria">
+      <End Role="Categoria" EntitySet="Categorias" />
+      <End Role="Becario" EntitySet="Becarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Becario_Escuela" Association="Self.FK_Becario_Escuela">
+      <End Role="Escuela" EntitySet="Escuelas" />
+      <End Role="Becario" EntitySet="Becarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Becario_Tutor" Association="Self.FK_Becario_Tutor">
+      <End Role="Tutor" EntitySet="Tutors" />
+      <End Role="Becario" EntitySet="Becarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pago_Becario" Association="Self.FK_Pago_Becario">
+      <End Role="Becario" EntitySet="Becarios" />
+      <End Role="Pago" EntitySet="Pagoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegistroPago_Becario" Association="Self.FK_RegistroPago_Becario">
+      <End Role="Becario" EntitySet="Becarios" />
+      <End Role="RegistroPago" EntitySet="RegistroPagoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioBecado_Becario" Association="Self.FK_ServicioBecado_Becario">
+      <End Role="Becario" EntitySet="Becarios" />
+      <End Role="ServicioBecado" EntitySet="ServicioBecadoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AsignacionOrganizacion_Organizacion" Association="Self.FK_AsignacionOrganizacion_Organizacion">
+      <End Role="Organizacion" EntitySet="Organizacions" />
+      <End Role="AsignacionOrganizacion" EntitySet="AsignacionOrganizacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioBecado_Organizacion" Association="Self.FK_ServicioBecado_Organizacion">
+      <End Role="Organizacion" EntitySet="Organizacions" />
+      <End Role="ServicioBecado" EntitySet="ServicioBecadoes" />
+    </AssociationSet>
+    <FunctionImport Name="ConsultaAlumno" ReturnType="Collection(ProyectoFinalModel.ConsultaAlumno_Result)">
+      <Parameter Name="x" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaBecario" ReturnType="Collection(ProyectoFinalModel.ConsultaBecario_Result)">
+      <Parameter Name="x" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaPagos" ReturnType="Collection(ProyectoFinalModel.ConsultaPagos_Result)">
+      <Parameter Name="x" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="consultaServicio" ReturnType="Collection(ProyectoFinalModel.consultaServicio_Result)">
+      <Parameter Name="x" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaTutor" ReturnType="Collection(ProyectoFinalModel.ConsultaTutor_Result)">
+      <Parameter Name="x" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PagoAutomatico">
+      <Parameter Name="IDBecario" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ProyectoFinalModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ProyectoFinalModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="ConsultaAlumno_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoM" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoP" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ConsultaBecario_Result">
+    <Property Type="Int32" Name="IDBecario" Nullable="false" />
+    <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoTutor" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ClaveCat" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Escuela" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="NombreBecario" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoBecario" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoM" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+    <Property Type="String" Name="GradoEscolar" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Promedio" Nullable="false" Precision="5" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="ConsultaPagos_Result">
+    <Property Type="String" Name="ClaveCat" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoP" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Pago1" Nullable="true" />
+    <Property Type="DateTime" Name="FechaPago1" Nullable="true" />
+    <Property Type="Boolean" Name="Pago2" Nullable="true" />
+    <Property Type="DateTime" Name="FechaPago2" Nullable="true" />
+    <Property Type="Boolean" Name="Pago3" Nullable="true" />
+    <Property Type="DateTime" Name="FechaPago3" Nullable="true" />
+    <Property Type="Boolean" Name="Pago4" Nullable="true" />
+    <Property Type="DateTime" Name="FechaPago4" Nullable="true" />
+    <Property Type="Boolean" Name="Pago5" Nullable="true" />
+    <Property Type="DateTime" Name="FechaPago5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="consultaServicio_Result">
+    <Property Type="String" Name="NombreBec" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoP" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoM" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="NombreOrg" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Dias" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="HorarioInicio" Nullable="false" />
+    <Property Type="Time" Name="HorarioFin" Nullable="false" />
+    <Property Type="String" Name="Actividades" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+    <Property Type="DateTime" Name="FechaFin" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ConsultaTutor_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoM" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoP" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<ProyectoFinalPam.Models.ConsultaBecario_Result>
+
+
+@{
+    ViewBag.Title = "ConsultaBecario";
+
+}
+
+<h1>Introduzca becario:</h1>
+
+<form action="/Home/ConsultaBecario">
+    <br>
+    <input type="text" name="alumno" value="" />
+    <br><br>
+    <input type="submit" class="btn btn-info value=" aceptar" />
+</form>
+<br />
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            ID Becario
+        </th>
+        <th>
+            Nombre de Tutor
+        </th>
+        <th>
+           Apellido de Tutor
+        </th>
+
+        <th>
+            Tipo de Beca
+        </th>
+        <th>
+            Escuela
+        </th>
+        <th>
+            Nombre de Becario
+        </th>
+        <th>
+           Apellido Paterno
+        </th>
+        <th>
+           Apellido Materno
+        </th>
+        <th>
+           Fecha de nacimiento
+        </th>
+        <th>
+          Grado Escolar
+        </th>
+        <th>
+            Promedio
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDBecario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClaveCat)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Escuela)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreBecario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoBecario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradoEscolar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Promedio)
+            </td>
+           
+
+        </tr>
+    }
+
+</table>
+
+

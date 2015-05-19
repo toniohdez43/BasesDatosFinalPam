@@ -1,0 +1,114 @@
+﻿@model ProyectoFinalPam.Models.RegistroPago
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RegistroPago</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClaveCat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClaveCat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPago1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPago1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPago2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPago2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPago3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPago3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPago4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPago4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPago5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPago5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Becario.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Becario.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDRegistroPago }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

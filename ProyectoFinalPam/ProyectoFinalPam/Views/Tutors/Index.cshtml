@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ProyectoFinalPam.Models.Tutor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tutores</h2>
+
+
+
+    @Html.ActionLink("Crear nuevo", "Create")
+
+
+<table class="table">
+    <tr>
+        <th>
+           Nombre
+        </th>
+        <th>
+            Apellido Paterno
+        </th>
+        <th>
+           Apellido Materno
+        </th>
+        <th>
+            Domicio de casa
+        </th>
+        <th>
+           Domicio de trabajo
+        </th>
+        <th>
+            Correo
+        </th>
+        <th>
+           Puesto
+        </th>
+        <th>
+            Telefono de casa
+        </th>
+        <th>
+           Telefono de trabajo
+        </th>
+        <th>
+           Fecha de inicio
+        </th>
+        <th>
+            Fecha de fin
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DomicilioCasa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DomicilioTrabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelefonoCasa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelefonoTrabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFinal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDTutor }) |
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDTutor })
+        </td>
+    </tr>
+}
+
+</table>

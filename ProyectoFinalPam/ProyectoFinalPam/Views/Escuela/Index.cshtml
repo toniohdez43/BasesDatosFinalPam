@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProyectoFinalPam.Models.Escuela>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Escuela</h2>
+
+
+
+    @Html.ActionLink("Crear nuevo", "Create")
+
+
+<table class="table">
+    <tr>
+        <th>
+           Escuela
+        </th>
+        <th>
+            Direccion
+        </th>
+        <th>
+           Telefono
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Escuela1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDEscuela }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDEscuela }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDEscuela })
+        </td>
+    </tr>
+}
+
+</table>

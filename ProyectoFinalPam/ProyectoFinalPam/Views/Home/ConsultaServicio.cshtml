@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ProyectoFinalPam.Models.consultaServicio_Result>
+
+
+@{
+    ViewBag.Title = "ConsultaServicio";
+
+}
+
+<h1>Introduzca becario:</h1>
+
+<form action="/Home/ConsultaServicio">
+    <br>
+    <input type="text" name="alumno" value="" />
+    <br><br>
+    <input type="submit" class="btn btn-info value=" aceptar" />
+</form>
+<br />
+
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Nombre de Becario
+        </th>
+        <th>
+           Apellido Paterno
+        </th>
+        <th>
+            Apellido Materno
+        </th>
+
+        <th>
+            Nombre de Organizaci&oacute;n
+        </th>
+        <th>
+            D&iacute;as
+        </th>
+        <th>
+            Hora de Inicio
+        </th>
+        <th>
+           Hora de T&eacute;rmino
+        </th>
+        <th>
+            Activiades
+        </th>
+        <th>
+            Fecha de Inicio
+        </th>
+        <th>
+            Fecha de Fin
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreBec)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreOrg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HorarioInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HorarioFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actividades)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFin)
+            </td>
+           
+
+        </tr>
+    }
+
+</table>

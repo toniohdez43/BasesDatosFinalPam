@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ProyectoFinalPam.Models.ConsultaTutor_Result>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="text" id="alumno" class="form-control" />
+    <input type="submit" />
+}
+
+@foreach (var p in Model)
+{
+    <strong>@p.Nombre</strong>@p.ApellidoP<strong>@p.ApellidoM</strong><br />
+}
+

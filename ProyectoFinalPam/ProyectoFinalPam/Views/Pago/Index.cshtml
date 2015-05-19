@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ProyectoFinalPam.Models.Pago>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pagos</h2>
+
+
+
+    @Html.ActionLink("Crear nuevo", "Create")
+
+
+<table class="table">
+    <tr>
+        <th>
+           Numero de parcialidades
+        </th>
+        <th>
+            Monto total
+        </th>
+        <th>
+           Monto por parcialidad
+        </th>
+        <th>
+            Monto 1
+        </th>
+        <th>
+           Monto 2
+        </th>
+        <th>
+            Monto 3
+        </th>
+        <th>
+            Monto 4
+        </th>
+        <th>
+            Monto 5
+        </th>
+        <th>
+           Nombre
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroParcialidades)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoParcialidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Becario.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDPago }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDPago }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDPago })
+        </td>
+    </tr>
+}
+
+</table>

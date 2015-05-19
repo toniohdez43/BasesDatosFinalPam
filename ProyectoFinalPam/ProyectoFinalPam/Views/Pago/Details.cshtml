@@ -1,0 +1,90 @@
+﻿@model ProyectoFinalPam.Models.Pago
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pago</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroParcialidades)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroParcialidades)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoParcialidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoParcialidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Becario.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Becario.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDPago }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

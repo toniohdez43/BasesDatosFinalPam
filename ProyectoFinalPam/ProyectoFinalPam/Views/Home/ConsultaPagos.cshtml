@@ -1,0 +1,116 @@
+﻿@model IEnumerable<ProyectoFinalPam.Models.ConsultaPagos_Result>
+
+
+@{
+    ViewBag.Title = "ConsultaPagos";
+
+}
+
+<h1>Introduzca becario:</h1>
+
+<form action="/Home/ConsultaPagos">
+    <br>
+    <input type="text" name="alumno" value=""/>
+    <br><br>
+    <input type="submit" class="btn btn-info value="Aceptar" />
+</form>
+<br/>
+
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Tipo de Beca
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellido Paterno
+        </th>
+        
+        <th>
+            Pago 1
+        </th>
+        <th>
+           1ra Fecha
+        </th>
+        <th>
+            Pago 2
+        </th>
+        <th>
+            2da Fecha
+        </th>
+        <th>
+            Pago 3
+        </th>
+        <th>
+            3ra Fecha
+        </th>
+        <th>
+            Pago 4
+        </th>
+        <th>
+            4ta Fecha
+        </th>
+        <th>
+            Pago 5
+        </th>
+        <th>
+            5ta Fecha
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClaveCat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pago1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPago1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pago2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPago2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pago3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPago3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pago4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPago4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pago5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPago5)
+            </td>
+            
+        </tr>
+    }
+
+</table>
+

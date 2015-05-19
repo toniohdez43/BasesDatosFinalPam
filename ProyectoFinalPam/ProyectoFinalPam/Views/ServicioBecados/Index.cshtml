@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProyectoFinalPam.Models.ServicioBecado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Servicio de Becarios</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Nombre del Becario
+        </th>
+        <th>
+           Nombre de la Organizacion
+        </th>
+        <th>
+            Dias
+        </th>
+        <th>
+            Hora de Inicio
+        </th>
+        <th>
+            Hora de Termino
+        </th>
+        <th>
+            Actividades
+        <th>
+            Fecha de inicio
+        </th>
+        <th>
+            Fecha de termino
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Becario.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Organizacion.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HorarioInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HorarioFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actividades)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFin)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.IDServicio}) |
+            @Html.ActionLink("Details", "Details", new { id = item.IDServicio }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IDServicio })
+        </td>
+    </tr>
+}
+
+</table>
